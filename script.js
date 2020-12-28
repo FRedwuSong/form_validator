@@ -47,7 +47,7 @@ function checkRequired(inputArray) {
 }
 
 // check input length
-function checkLength(input, min, max) {
+function checkLength(keyup, min, max) {
   if(input.value.length < min){
     showError(input, `${getFieldName(input)} must be at least ${min}`);
   } else if(input.value.length > max){
@@ -63,7 +63,7 @@ function getFieldName(input) {
 
 
 // event listener
-form.addEventListener('submit', function (e) {
+form.addEventListener('keyup', function (e) {
   e.preventDefault();
   
   checkRequired([username, email, password, password2]);
