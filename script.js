@@ -47,7 +47,7 @@ function checkRequired(inputArray) {
 }
 
 // check input length
-function checkLength(keyup, min, max) {
+function checkLength(input, min, max) {
   if(input.value.length < min){
     showError(input, `${getFieldName(input)} must be at least ${min}`);
   } else if(input.value.length > max){
@@ -62,14 +62,37 @@ function getFieldName(input) {
 }
 
 
-// event listener
-form.addEventListener('keyup', function (e) {
+// username listener input 
+username.addEventListener('input', function (e) {
   e.preventDefault();
   
-  checkRequired([username, email, password, password2]);
+  // checkRequired([username, email, password, password2]);
+  checkRequired([username]);
   checkLength(username, 3, 15);
-  checkLength(password, 6, 25); 
+  // checkLength(password, 6, 25);
+  // checkEmail(email);
+  // checkPasswordMatch(password, password2)
+
+});
+
+email.addEventListener('input', function (e) {
+  e.preventDefault();
+  
+  // checkRequired([username, email, password, password2]);
+  checkRequired([email]);
+  // checkLength(username, 3, 15);
+  // checkLength(password, 6, 25);
   checkEmail(email);
+  // checkPasswordMatch(password, password2)
+
+});
+
+// event listener keyup for password
+password.addEventListener('keyup', function (e) {
+  e.preventDefault();
+  
+  checkRequired([password, password2]);
+  checkLength(password, 6, 25);
   checkPasswordMatch(password, password2)
 
 });
